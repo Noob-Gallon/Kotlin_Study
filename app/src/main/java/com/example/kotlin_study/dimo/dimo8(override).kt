@@ -30,7 +30,7 @@ class Tiger : Animal2() {
 // 또한, 한 개의 subclass가 여러 개의 interface를 상속받을 수 있어 유연한 설계가 가능하다.
 
 abstract class Animal3(val times : Int, val play : Int) {
-    abstract fun eat() // 추상 함수는 비어있는 껍데기라고 생각하자.
+    abstract fun eat()// 추상 함수는 비어있는 껍데기라고 생각하자.
 
     fun sniff() {
         println("킁킁")
@@ -40,6 +40,10 @@ abstract class Animal3(val times : Int, val play : Int) {
             println("Hey")
         }
     }
+}
+
+abstract class Animal4(val times : Int, val play : Int) {
+
 }
 
 class Rabbit(times : Int, play : Int) : Animal3(times, play) { // 좌측, 내가 받을 매개변수, 오른쪽, superclass의 매개변수?

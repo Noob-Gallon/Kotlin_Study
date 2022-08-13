@@ -36,29 +36,33 @@ class Counter(var listener : EventListener) {
     }
 }
 
-//class EventPrinter() : EventListener {
-//    override fun onEvent(count: Int) {
-//        print("${count}-")
-//    }
-//
-//    fun start() {
-//        val counter = Counter(this) // Counter instance 생성.
-//
-//        // 여기서 this는, EventPrinter 객체 자신을 나타내지만,
-//        // (this는 키워드가 사용된 '객체 자신'을 참조하는 키워드이다.)
-//        // 받는 쪽에서 EventListner만 요구했기 때문에, EventListener의 구현부만 넘겨주게 된다.
-//
-//        // 객체지향의 다형성.
-//        // 상속받아 만들어진 Class는 superclass의 기능을 포함하여 만들어지므로,
-//        // superclass에서 정의한 부분만 넘겨줄 수 있다.
-//
-//        counter.count()
-//    }
-//}
+class EventPrinter() : EventListener {
+    override fun onEvent(count: Int) {
+        print("${count}-")
+    }
+
+    fun start() {
+        val counter = Counter(this) // Counter instance 생성.
+
+        // 여기서 this는, EventPrinter 객체 자신을 나타내지만,
+        // (this는 키워드가 사용된 '객체 자신'을 참조하는 키워드이다.)
+        // 받는 쪽에서 EventListner만 요구했기 때문에, EventListener의 구현부만 넘겨주게 된다.
+
+        // EventPrinter는 interface EventListener의 subclass이다.
+        // superclass를 constructor로 받는 fun에 subclass를 주더라도,
+        // up-casting, 즉, 다형성에 의해 형변환이 가능하므로, 이와 같이 사용할 수 있다.
+
+        // 객체지향의 다형성.
+        // 상속받아 만들어진 Class는 superclass의 기능을 포함하여 만들어지므로,
+        // superclass에서 정의한 부분만 넘겨줄 수 있다.
+
+        counter.cnt()
+    }
+}
 
 // 익명 객체(Anonymous Object)
 
-class EventPrinter() {
+class EventPrinter2() {
     fun start() {
         val counter = Counter(object: EventListener {
             override fun onEvent(count: Int) {
